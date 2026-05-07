@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AgentFam — AI family coordinator</title>
+<meta name="description" content="AgentFam is an AI assistant (Fammie) that helps families coordinate schedules, tasks, and reminders via WhatsApp, SMS, and web. Operated by MyFam." />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">AgentFam</a>
+    <nav>
+      <a href="/sms">SMS Program</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Fammie keeps your family on the same page.</h1>
+    <p class="lede">
+      AgentFam is an AI family coordinator that handles schedules, reminders,
+      and to-dos through the apps you already use — WhatsApp, SMS, and web.
+      Operated by MyFam (Gole Enterprise LLC).
+    </p>
+  </section>
+
+  <section class="card waitlist" id="waitlist">
+    <h2>Join the waitlist</h2>
+    <p class="muted">We&rsquo;ll invite you when AgentFam is open to new families.</p>
+
+    <form id="waitlist-form" class="form" novalidate>
+      <label>
+        <span>Your name</span>
+        <input name="name" required placeholder="Jane Smith" autocomplete="name" />
+      </label>
+
+      <label>
+        <span>Email</span>
+        <input name="email" type="email" required placeholder="jane@example.com" autocomplete="email" />
+      </label>
+
+      <label>
+        <span>Phone <em class="muted">(optional — for SMS updates)</em></span>
+        <input name="phone" type="tel" placeholder="+1 555 123 4567" autocomplete="tel" />
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="sms_consent" id="sms_consent" />
+        <span>
+          <strong>SMS / WhatsApp consent (required if you provide a phone number).</strong>
+          By checking this box, I agree to receive SMS and/or WhatsApp messages
+          from AgentFam (operated by MyFam) at the phone number provided, including
+          calendar reminders, task alerts, schedule updates, and an optional daily
+          morning summary delivered by an AI assistant (Fammie).
+          <br /><br />
+          Message frequency varies. Message and data rates may apply.
+          Reply <strong>HELP</strong> for help, <strong>STOP</strong> to cancel at any time.
+          See our <a href="/sms">SMS Program details</a>,
+          <a href="/privacy">Privacy Policy</a>, and
+          <a href="/terms">Terms of Service</a>.
+          <br /><br />
+          We do not sell or share your phone number or SMS opt-in data with
+          third parties for marketing.
+        </span>
+      </label>
+
+      <button type="submit">Join the waitlist</button>
+      <p id="waitlist-status" class="status" role="status"></p>
+    </form>
+  </section>
+
+  <section class="legal-links">
+    <p class="muted">
+      <a href="/sms">AgentFam SMS Messaging Program</a> ·
+      <a href="/privacy">Privacy Policy</a> ·
+      <a href="/terms">Terms of Service</a>
+    </p>
+    <p class="muted small">
+      AgentFam is a messaging program operated by MyFam (Gole Enterprise LLC),
+      4 Clydesdale Court, Plainsboro Township, NJ 08536, USA.
+      Support: <a href="mailto:rgoolio32@gmail.com">rgoolio32@gmail.com</a>
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container muted small">
+    &copy; 2026 MyFam · Gole Enterprise LLC ·
+    <a href="/privacy">Privacy</a> ·
+    <a href="/terms">Terms</a> ·
+    <a href="/sms">SMS Program</a>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("waitlist-form");
+  const status = document.getElementById("waitlist-status");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const phone = (data.get("phone") || "").toString().trim();
+    const consent = data.get("sms_consent");
+    if (phone && !consent) {
+      status.textContent = "Please check the SMS consent box to receive messages at that number.";
+      status.className = "status err";
+      return;
+    }
+    const subject = encodeURIComponent("AgentFam waitlist signup");
+    const body = encodeURIComponent(
+      `Name: ${data.get("name") || ""}\n` +
+      `Email: ${data.get("email") || ""}\n` +
+      `Phone: ${phone}\n` +
+      `SMS consent: ${consent ? "yes" : "no"}\n`
+    );
+    status.textContent = "Thanks! Opening your email so we receive your signup.";
+    status.className = "status ok";
+    window.location.href = `mailto:rgoolio32@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+:root {
+  --bg: #fafaf7;
+  --fg: #1a1a1a;
+  --muted: #6b7280;
+  --accent: #6d4ad6;
+  --accent-hover: #5a3cc0;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --danger: #b42d2d;
+  --ok: #15803d;
+  --maxw: 720px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--fg);
+}
+.site-header nav a {
+  margin-left: 18px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.hero { padding: 56px 0 24px; }
+.hero h1 {
+  font-size: 36px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+.hero .lede { font-size: 17px; color: #444; margin: 0 0 24px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin: 20px 0;
+}
+
+.waitlist h2 { margin: 0 0 4px; font-size: 20px; }
+.waitlist .muted { margin: 0 0 16px; }
+
+.form { display: flex; flex-direction: column; gap: 14px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.form label > span { font-weight: 500; }
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="tel"],
+.form input:not([type]) {
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+}
+.form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+
+.form label.check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #333;
+  background: #faf9fc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+.form label.check input[type="checkbox"] { margin-top: 3px; flex: 0 0 auto; }
+
+.form button {
+  margin-top: 4px;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.form button:hover { background: var(--accent-hover); }
+
+.status { margin: 6px 0 0; font-size: 13px; min-height: 18px; }
+.status.err { color: var(--danger); }
+.status.ok { color: var(--ok); }
+
+.legal-links { margin: 32px 0; text-align: center; }
+.legal-links p { margin: 6px 0; }
+
+.muted { color: var(--muted); }
+em.muted { font-style: normal; }
+.small { font-size: 12px; }
+
+article { padding: 32px 0 64px; }
+article h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: -0.01em; }
+article .updated { color: var(--muted); font-size: 13px; margin: 0 0 24px; }
+article section { margin: 24px 0; }
+article h2 { font-size: 17px; margin: 0 0 8px; }
+article p, article li { font-size: 15px; color: #1f2937; }
+article ul, article ol { padding-left: 22px; }
+article ul li, article ol li { margin-bottom: 6px; }
+article code {
+  background: #f1f1f4;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+}
+article .callout {
+  background: #faf9fc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 22px 0 40px;
+  margin-top: 48px;
+  text-align: center;
+}
+.site-footer a { color: var(--muted); margin: 0 6px; text-decoration: none; }
+.site-footer a:hover { color: var(--accent); text-decoration: underline; }
+
+@media (max-width: 540px) {
+  .hero { padding-top: 36px; }
+  .hero h1 { font-size: 28px; }
+  .site-header nav a { margin-left: 12px; font-size: 13px; }
+}
